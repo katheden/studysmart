@@ -1,0 +1,95 @@
+{
+  "best_model_name": "Random Forest",
+  "accuracy": 0.8,
+  "f1_weighted": 0.7989,
+  "cv_f1": 0.8431,
+  "features": [
+    "study_time",
+    "absences",
+    "failures",
+    "G1",
+    "G2",
+    "internet",
+    "higher_edu",
+    "activities",
+    "romantic",
+    "family_support_num",
+    "gender_bin",
+    "high_absence",
+    "study_efficiency"
+  ],
+  "feature_importance": [
+    [
+      "G2",
+      0.3903
+    ],
+    [
+      "G1",
+      0.2582
+    ],
+    [
+      "study_efficiency",
+      0.1145
+    ],
+    [
+      "failures",
+      0.0514
+    ],
+    [
+      "absences",
+      0.0396
+    ],
+    [
+      "study_time",
+      0.0354
+    ],
+    [
+      "higher_edu",
+      0.0293
+    ],
+    [
+      "family_support_num",
+      0.0239
+    ],
+    [
+      "gender_bin",
+      0.0141
+    ],
+    [
+      "internet",
+      0.0132
+    ],
+    [
+      "activities",
+      0.0132
+    ],
+    [
+      "romantic",
+      0.0117
+    ],
+    [
+      "high_absence",
+      0.0052
+    ]
+  ],
+  "comparison": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.7615,
+      "f1_weighted": 0.7617,
+      "cv_f1": 0.8209
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.8,
+      "f1_weighted": 0.7989,
+      "cv_f1": 0.8431
+    },
+    {
+      "model": "Gradient Boosting",
+      "accuracy": 0.7846,
+      "f1_weighted": 0.7828,
+      "cv_f1": 0.837
+    }
+  ]
+}
