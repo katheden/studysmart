@@ -6,7 +6,7 @@
 |-------|-------|
 | **Project title** | StudySmart: Student Performance Prediction and Personalised Study Coaching |
 | **Student** | Katheesrupan |
-| **GitHub repository URL** | https://github.com/kathden/studysmart |
+| **GitHub repository URL** | https://github.com/katheden/studysmart |
 | **Deployment URL** | https://huggingface.co/spaces/DKatheesrupan/studysmart |
 | **Submission date** | 07 June 2026 |
 
