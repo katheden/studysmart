@@ -271,7 +271,7 @@ The application is deployed on Hugging Face Spaces using Docker. Docker is used 
 ### Setup
 
 ```bash
-git clone https://github.com/kathden/studysmart.git
+git clone https://github.com/katheden/studysmart.git
 cd studysmart
 python -m venv venv
 source venv/bin/activate          # Windows: venv\Scripts\activate
