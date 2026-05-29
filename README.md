@@ -10,10 +10,12 @@ Student Performance Prediction and Personalised Study Coaching
 
 StudySmart is a Streamlit application that estimates academic performance risk from structured student data and gives short study recommendations based on the model output.
 
+Deployment: https://huggingface.co/spaces/DKatheesrupan/studysmart
+
 ## Quick Start
 
 ```bash
-git clone https://github.com/<your-github-username>/studysmart.git
+git clone https://github.com/katheden/studysmart.git
 cd studysmart
 python -m venv venv
 source venv/bin/activate  # Windows: venv\\Scripts\\activate
@@ -81,9 +83,3 @@ studysmart/
 ├── models/                 # Saved model artefacts
 └── screenshots/            # EDA and app screenshots
 ```
-
-## Notes
-
-The OpenAI key must not be committed to GitHub. For Streamlit Cloud or Hugging Face Spaces, add it through the platform's secret settings.
-
-Add GitHub users `jasminh` and `bkuehnis` as collaborators before submitting.
