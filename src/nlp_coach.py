@@ -90,6 +90,7 @@ Rules:
 - Give exactly three specific recommendations.
 - Base the recommendations on the top model factors and the additional study context.
 - Format the output as one short explanation paragraph followed by three numbered recommendations.
+- Do not use Markdown formatting such as **bold** or headings.
 """
 
     user_prompt = f"""Student performance prediction:
@@ -165,7 +166,7 @@ def generate_coaching_template(
     top_names = [FEATURE_LABELS.get(f, f) for f, _ in top_features[:3]]
     factor_str = ", ".join(top_names)
     explanation = (
-        f"Based on the information provided, the model identifies a **{risk_label}** "
+        f"Based on the information provided, the model identifies a {risk_label} "
         f"(confidence: {confidence:.0%}). "
         f"The most influential factors in this assessment are: {factor_str}. "
         f"This is an estimate to help guide your preparation - it is not a definitive judgement. "
@@ -188,7 +189,7 @@ def generate_coaching_template(
 
     return f"""{explanation}
 
-**Recommendations for you:**
+Recommendations for you:
 {rec_text}
 """
 
