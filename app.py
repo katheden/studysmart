@@ -41,25 +41,27 @@ st.markdown("""
         margin-top: 0;
     }
     .risk-box {
-        border-radius: 12px;
+        border-radius: 14px;
         padding: 20px 28px;
-        margin: 12px 0;
-        font-size: 1.3rem;
+        margin: 14px 0;
+        font-size: 1.25rem;
         font-weight: 700;
+        border: 1px solid #334155;
     }
-    .low-risk    { background: #d4edda; color: #155724; border-left: 6px solid #28a745; }
-    .medium-risk { background: #fef3c7; color: #78350f; border-left: 6px solid #f59e0b; }
-    .high-risk   { background: #f8d7da; color: #721c24; border-left: 6px solid #dc3545; }
+    .low-risk    { background: #0f2f24; color: #d1fae5; border-left: 6px solid #10b981; }
+    .medium-risk { background: #33270d; color: #fde68a; border-left: 6px solid #f59e0b; }
+    .high-risk   { background: #3b1118; color: #fecdd3; border-left: 6px solid #ef4444; }
     .coaching-box {
-        background: #111827 !important;
-        color: #ffffff !important;
-        border-radius: 12px;
-        padding: 22px 26px;
-        border-left: 6px solid #2563eb;
-        border: 1px solid #374151;
+        background: #0f172a !important;
+        color: #f8fafc !important;
+        border-radius: 14px;
+        padding: 24px 28px;
+        border-left: 6px solid #38bdf8;
+        border: 1px solid #334155;
         font-size: 1rem;
-        line-height: 1.7;
+        line-height: 1.65;
         white-space: pre-wrap;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.22);
     }
     .section-header {
         font-size: 1.2rem;
@@ -70,12 +72,12 @@ st.markdown("""
     }
 
     .result-card {
-        background: #111827 !important;
-        border: 1px solid #374151 !important;
-        border-radius: 12px !important;
-        padding: 18px 18px !important;
+        background: #0f172a !important;
+        border: 1px solid #334155 !important;
+        border-radius: 14px !important;
+        padding: 18px 20px !important;
         min-height: 112px !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.24) !important;
     }
     .result-card-title {
         color: #d1d5db !important;
@@ -93,12 +95,12 @@ st.markdown("""
 
     /* Sidebar model information cards */
     section[data-testid="stSidebar"] .model-card {
-        background: #1f2937;
-        border: 1px solid #374151;
-        border-radius: 12px;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 14px;
         padding: 16px 18px;
         margin-bottom: 14px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.22);
     }
     section[data-testid="stSidebar"] .model-card-title {
         color: #d1d5db;
@@ -113,9 +115,9 @@ st.markdown("""
         line-height: 1.1;
     }
     section[data-testid="stSidebar"] .selected-model-box {
-        background: #173a2c;
-        border: 1px solid #295943;
-        border-radius: 12px;
+        background: #0f2f24;
+        border: 1px solid #166534;
+        border-radius: 14px;
         padding: 14px 16px;
         margin: 10px 0 16px 0;
         color: #ffffff;
@@ -124,6 +126,18 @@ st.markdown("""
     section[data-testid="stSidebar"] .selected-model-label {
         color: #d1d5db;
         font-weight: 500;
+    }
+
+    div.stButton > button[kind="primary"] {
+        background: #2563eb !important;
+        border: 1px solid #1d4ed8 !important;
+        color: #ffffff !important;
+        border-radius: 10px !important;
+        font-weight: 700 !important;
+    }
+    div.stButton > button[kind="primary"]:hover {
+        background: #1d4ed8 !important;
+        border-color: #1e40af !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -154,6 +168,9 @@ def result_card(title, value):
     )
 
 
+# Automatically use OpenAI only when a key is configured; otherwise use the template fallback.
+use_api = bool(os.getenv("OPENAI_API_KEY"))
+
 # Sidebar
 with st.sidebar:
     st.title("StudySmart")
@@ -180,8 +197,6 @@ with st.sidebar:
         sidebar_model_card("CV F1-Score", f"{meta['cv_f1']:.1%}")
     except Exception:
         st.info("Train the model first: `python src/train_model.py`")
-    st.divider()
-    use_api = st.toggle("Use OpenAI for coaching", value=False)
 
 
 # Main header
@@ -395,6 +410,7 @@ if predict_clicked:
         except Exception as e:
             coaching_text = f"Coaching could not be generated: {e}"
 
+    coaching_text = coaching_text.replace("**", "")
     st.markdown(
         f'<div class="coaching-box">{coaching_text}</div>',
         unsafe_allow_html=True
