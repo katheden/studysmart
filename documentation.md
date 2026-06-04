@@ -272,9 +272,18 @@ N/A — Computer Vision was not selected as a primary block.
   7. User sees risk level, probability chart, feature importance, coaching text, weekly study plan, and report download.
 
 - Screenshot or short demo:
-  - `screenshots/app_input.png` — shows the academic profile input form.
-  - `screenshots/app_result.png` — shows prediction result, confidence, probability distribution, and top influencing factors.
-  - `screenshots/app_coaching.png` — shows the coaching text, download button, and suggested weekly study plan.
+
+  **Input form**
+
+  ![StudySmart input form](screenshots/app_input.png)
+
+  **Prediction result**
+
+  ![StudySmart prediction result](screenshots/app_result.png)
+
+  **Study coaching output**
+
+  ![StudySmart coaching output](screenshots/app_coaching.png)
 
 The application is deployed on Hugging Face Spaces using Docker. Docker is used because the user interface is implemented with Streamlit and the Docker setup reproduces the local environment reliably.
 
